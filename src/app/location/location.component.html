@@ -1,0 +1,9 @@
+<div>
+    <button (click)="getCurrentLocation()">Current Location</button>
+    <p *ngIf="locationError; else locationData">{{ locationError }}</p>
+    <ng-template #locationData>
+      <p>Latitude: {{ latitude }}</p>
+      <p>Longitude: {{ longitude }}</p>
+    </ng-template>
+  </div>
+  
