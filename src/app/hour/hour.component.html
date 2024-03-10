@@ -1,0 +1,25 @@
+
+  <div>
+    <h2 class="date">{{ currentDate }}</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Weather</th>
+          <th scope="col">Icon</th>
+          <th scope="col">Wind</th>
+          <th scope="col">Humidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hour of weatherData">
+          <td >{{ hour.time }}</td>
+          <td>{{ hour.condition.text }}</td>
+          <td><img src="{{ hour.condition.icon }}" alt="Weather Icon"></td>
+          <td>{{ hour.wind_kph }} kph</td>
+          <td>{{ hour.humidity }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

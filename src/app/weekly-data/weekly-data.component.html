@@ -1,0 +1,27 @@
+<!-- <div *ngIf="weatherData"> -->
+    <!-- Your table code here -->
+ 
+<div>
+    <h2 class="week">Weekly Data</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Weather</th>
+          <th scope="col">Icon</th>
+          <th scope="col">Wind</th>
+          <th scope="col">Humidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let day of weatherData?.forecast?.forecastday">
+            <td>{{ day?.date }}</td>
+            <td>{{ day?.day?.condition?.text }}</td>
+            <td><img src="{{ day?.day?.condition?.icon }}" alt="Weather Icon"></td>
+            <td>{{ day?.day?.maxwind_kph }} kph</td>
+            <td>{{ day?.day?.avghumidity }}%</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- </div> -->

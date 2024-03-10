@@ -1,10 +1,77 @@
-.logo{
+// .logo{
+//     height: 30px;
+//     width: 30px;
+// }
+// .navbar-light .navbar-nav .nav-link {
+//     color: white;
+// }
+// .navbar-light .navbar-brand {
+//     color: white;
+// }
+// .navbar-nav{
+//     display: flex;
+//     justify-content: center;
+// }
+/* Your existing styles */
+
+.logo {
     height: 30px;
     width: 30px;
 }
+
 .navbar-light .navbar-nav .nav-link {
     color: white;
 }
+
 .navbar-light .navbar-brand {
     color: white;
 }
+.nav-item {
+    margin-right: 20px; 
+}
+.nav-item.nav-link.active {
+    color: yellow;
+}
+.navbar .search-city
+{
+  width: 25vw;
+  height: 5.75vh;
+  font-size: 18.75px;
+}
+
+.search-city
+{
+  letter-spacing: 0.50px;
+  padding-left: 20px;
+  background: rgba(214, 202, 202, 0.5);
+  border: none;
+  color: #fff;
+  border-radius: 50px;
+  outline: none;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input {
+    width: 400px; 
+    margin-right: 10px;
+  }
+  
+  .btn {
+    height: 38px; 
+  }
+
+  button{
+    background-color: black;
+  }
+  .card-1{
+    width: 900px;
+  }
+  .card-body-2{
+    margin: 53px;
+  }
+ 

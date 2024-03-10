@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+.card-weather {
+    background: #e1ecff;
+    background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff);
+ }
+ .card-weather  {
+    background: url(https://res.cloudinary.com/dxfq3iotg/image/upload/v1557323760/weather.svg) no-repeat center;
+    background-size: cover;
+    border-radius: 20px;
+ }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
