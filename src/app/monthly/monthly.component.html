@@ -1,0 +1,61 @@
+<!-- <h2 align="center">
+    month & month
+</h2>
+<br />
+<table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+    <caption align="top">{{ locationData.name }} - Monthly Weather</caption>
+    <thead>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of monthlyData">
+        <td *ngFor="let day of week.day">
+          {{ day.date | date: 'd' }}
+          <br />
+          Max Temp: {{ day.day.maxtemp_c }}°C
+          <br />
+          Icon: <img src="{{ day.day.condition.icon }}" alt="{{ day.day.condition.text }}" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+   -->
+   <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+    <caption align="top">{{ locationData?.name }} - Monthly Weather</caption>
+    
+    <thead>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let week of monthlyData">
+            <td *ngFor="let day of week.dayData">
+              <ng-container *ngIf="day; else loadingTemplate">
+                {{ day.date | date: 'd' }}
+                <br />
+                {{ day.maxtemp_c }}°C
+                <br />
+                <img src="{{ day.condition?.icon }}" alt="{{ day.condition?.text }}" />
+              </ng-container>
+              <ng-template #loadingTemplate>Loading data...</ng-template>
+            </td>
+          </tr>
+      </tbody>
+      
+  </table>
+  

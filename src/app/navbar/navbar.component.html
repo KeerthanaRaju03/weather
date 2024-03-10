@@ -16,12 +16,19 @@
         routerLinkActive="active">Weekly Data</a>
       <a class="nav-item nav-link" routerLink="/monthly"
         routerLinkActive="active">Monthly Data</a>
-        <div class="form form-group">
+        <!-- <div class="form form-group">
           <div class="input-container">
             <input type="text" [(ngModel)]="weatherLocation" placeholder="Enter Location" class="input form-control">
 <button (click)="getWeather()" class="btn btn-secondary">Show</button>
           </div>
+        </div> -->
+        <div class="form form-group">
+          <div class="input-container">
+            <input type="text" [(ngModel)]="weatherLocation" placeholder="Enter Location" class="input form-control" (keyup.enter)="getWeather()">
+            <button (click)="getWeather()" class="btn btn-secondary">Show</button>
+          </div>
         </div>
+        
         
     </div>
   </div>
