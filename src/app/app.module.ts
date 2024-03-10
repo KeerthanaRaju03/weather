@@ -8,22 +8,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LocationComponent } from './location/location.component';
+import { TestingComponent } from './testing/testing.component';
+import { WeeklyDataComponent } from './weekly-data/weekly-data.component';
+import { HourComponent } from './hour/hour.component';
+import { MonthlyComponent } from './monthly/monthly.component';
+import { SharedService } from './shared/shared.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    LocationComponent
+    LocationComponent,
+    TestingComponent,
+    WeeklyDataComponent,
+    HourComponent,
+    MonthlyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

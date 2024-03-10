@@ -1,0 +1,202 @@
+<!-- 
+<section class="pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-6 text-right">
+        <a class="btn btn-primary mb-3 mr-1"
+          (click)="prevSlide()">Prev</a>&nbsp;&nbsp;
+        <a class="btn btn-primary mb-3" (click)="nextSlide()">Next</a>
+      </div>
+      <div class="col-12">
+        <div #carousel id="carouselExampleIndicators2" class="carousel slide"
+          data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-4 mb-3">
+           
+                  
+
+                  <div *ngIf="weatherApi?.forecast?.forecastday?.length > 0">
+                    <div *ngFor="let hour of weatherApi.forecast.forecastday[0]?.hour">
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="hour">
+                              <p *ngIf="hour.time">{{ hour.time.split(' ')[1] }}</p>
+                              <p *ngIf="hour.temp_c">{{ hour.temp_c }}&deg;C</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+             
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<section class="pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 text-right">
+        <a class="btn btn-primary mb-3 mr-1" (click)="prevSlide()">Prev</a>&nbsp;&nbsp;
+        <a class="btn btn-primary mb-3" (click)="nextSlide()">Next</a>
+      </div>
+      <div class="col-12">
+        <div #carousel id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div *ngIf="weatherApi?.forecast?.forecastday?.length > 0">
+                    <div *ngFor="let hour of weatherApi.forecast.forecastday[0]?.hour">
+                      <div class="col-md-4 mb-3">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="hour">
+                              <p *ngIf="hour?.time">{{ hour.time.split(' ')[1] }}</p>
+                              <p *ngIf="hour?.temp_c">{{ hour.temp_c }}&deg;C</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="pt-5 pb-5">
+  <div class="container">
+      <div class="row">
+          
+        <div class="col-6 text-right">
+          <a class="btn btn-primary mb-3 mr-1" (click)="prevSlide()">Prev</a>&nbsp;&nbsp;
+          <a class="btn btn-primary mb-3" (click)="nextSlide()">Next</a>
+        </div>
+          <div class="col-12">
+            <div #carousel id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <div class="row">
+                            
+
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                       <div class="card-body">
+                                          <h4 class="card-title">1Special title </h4>
+                                          <p class="card-text">1With supporting</p>
+
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                     <div class="card-body">
+                                          <h4 class="card-title">Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                     <div class="card-body">
+                                          <h4 class="card-title">2Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="row">
+
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                       <div class="card-body">
+                                          <h4 class="card-title">3Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                     <div class="card-body">
+                                          <h4 class="card-title">4Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <h4 class="card-title">5Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="row">
+
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                     <div class="card-body">
+                                          <h4 class="card-title">6Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <h4 class="card-title">7Special title </h4>
+                                          <p class="card-text">With supporting</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <h4 class="card-title">8Special title </h4>
+                                          <p class="card-text">With supporting</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section> -->

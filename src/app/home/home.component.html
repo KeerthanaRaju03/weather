@@ -1,137 +1,121 @@
-<div class="form form-group">
-    <div class="input-container">
-        <input type="text" [(ngModel)]="weatherLocation"
-            placeholder="Enter Location" class="input form-control">
-        <button (click)="getWeather()" class="btn btn-secondary">Show</button>
+ <div class="card-group">
+
+    <div class="card-1">
+        <div class="card-body-1">
+            <app-location></app-location>
+        </div>
     </div>
-</div>
+    <div *ngIf="showPageContent" class="page-content page-container"
+        id="page-content">
+        <div class="card-2">
 
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-lg-8 grid-margin stretch-card">
-                <!--weather card-->
-                <div class="card card-weather">
-                    <div class="card-body">
-                        <div class="weather-date-location">
-                            <h3>{{
-                                getFormattedDateAndDay(weatherData?.list[0]?.dt_txt)?.day
-                                }}</h3>
-                            <p class="text-gray">
-                                <span class="weather-date">{{
-                                    weatherData?.city?.name }} </span>
-                                <span class="weather-location">{{
-                                    weatherData?.city?.country}}</span>
-                            </p>
-                            <p class="weather-location">{{
-                                weatherData?.city?.coord?.lat}} | {{
-                                weatherData?.city?.coord?.lon}}</p>
+            <div class="card-body-2">
 
-                        </div>
-                        <div class="weather-data d-flex">
-                            <div class="mr-auto">
-                                <h4 class="display-3">{{
-                                    weatherData?.list[0]?.main?.temp }}
-                                    <span class="symbol">&deg;</span>F</h4>
-                                <p>
-                                    {{ weatherData?.list[0]?.weather[0]?.main}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="d-flex weakly-weather">
+                <div class="page-content page-container" id="page-content">
+                    <div class="padding">
+                        <div
+                            class="row container d-flex justify-content-center">
+                            <div class="col-lg-8 grid-margin stretch-card">
 
+                                <div class="card card-weather">
+                                    <div class="card-body">
+                                        <div class="weather-date-location">
+                                            <div
+                                                class="d-flex align-items-start">
+                                                <div>
+                                                    <h3>{{
+                                                        getFormattedDateAndDay(weatherApi?.forecast?.forecastday[0]?.date)?.day
+                                                        }}</h3>
+                                                    <p class="text-gray">
+                                                        <span
+                                                            class="weather-date">{{
+                                                            weatherApi?.location?.name
+                                                            }} &nbsp;|
+                                                            &nbsp;</span>
+                                                        <span
+                                                            class="weather-location">{{
+                                                            weatherApi?.location?.country
+                                                            }}</span>
+                                                    </p>
+                                                    <p class="weather-location">
+                                                        {{
+                                                        weatherApi?.location?.lat
+                                                        }} lat | {{
+                                                        weatherApi?.location?.lon
+                                                        }} lon
+                                                    </p>
+                                                </div>
 
+                                                <img
+                                                    *ngIf="weatherApi?.forecast?.forecastday[0]?.day?.condition?.icon"
+                                                    [src]="getWeatherIconUrl(weatherApi?.forecast?.forecastday[0]?.day?.condition?.icon)"
+                                                    alt="Weather Icon"
+                                                    class="ml-auto"
+                                                    style="margin-left: 250px;">
+                                            </div>
+                                        </div>
 
-                            <!-- Looping the weekly data -->
-                            <!-- <div *ngFor="let weather of weatherData?.list">
+                                        <div class="weather-data d-flex">
+                                            <div class="mr-auto">
 
-                                <div class="weakly-weather-item">
-                                    <p class="mb-1">
-                                        {{
-                                        getFormattedDateAndDay(weather?.list[0]?.dt_txt)?.day}}
-                                    </p>
-                                    <i class="mdi mdi-weather-hail"> {{ weather?.list[0]?.weather[0]?.icon
-                                    }}</i>
-                                    <p class="mb-0">
-                                        {{ weather?.list[0]?.main?.temp
-                                        }}°F&deg;
-                                    </p>
+                                                <h4 class="display-3">{{
+                                                    weatherApi?.forecast?.forecastday[0]?.day?.avgtemp_c
+                                                    }}<span
+                                                        class="symbol">&deg;</span>C
+                                                    &nbsp;|&nbsp;{{
+                                                    weatherApi?.forecast?.forecastday[0]?.day?.avgtemp_f}}<span
+                                                        class="symbol">&deg;</span>F</h4>
+                                                <h6 class="main1">{{
+                                                    weatherApi?.forecast?.forecastday[0]?.day?.condition?.text
+                                                    }}</h6>
+                                                <!-- <div
+                                                    *ngFor="let hour of weatherApi?.forecast?.forecastday[0]?.hour">
+                                                    <div class="cards">
+                                                        <div class="hour">
+                                                            <p>{{
+                                                                hour.time.split(' ')[1]
+                                                                }}</p>
+                                                            <p>{{ hour.temp_c
+                                                                }}&deg;C</p>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <!-- <div
+                                                    *ngFor="let hour of weatherApi?.forecast?.forecastday[0]?.hour">
+                                                    <div class="col-md-4 mb-3">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body">
+                                                                <div
+                                                                    class="hour">
+                                                                    <p>{{
+                                                                        hour.time.split(' ')[1]
+                                                                        }}</p>
+                                                                    <p>{{
+                                                                        hour.temp_c
+                                                                        }}&deg;C</p>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="d-flex weakly-weather">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> -->
-
-
-
-
-                            <!-- <div class="weakly-weather-item">
-                                <p class="mb-0">
-                                    Sun
-                                </p>
-                                <i class="mdi mdi-weather-cloudy"></i>
-                                <p class="mb-0">
-                                    30&deg;
-                                </p>
                             </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Mon
-                                </p>
-                                <i class="mdi mdi-weather-hail"></i>
-                                <p class="mb-0">
-                                    31&deg;
-                                </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Tue
-                                </p>
-                                <i class="mdi mdi-weather-partlycloudy"></i>
-                                <p class="mb-0">
-                                    28&deg;
-                                </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Wed
-                                </p>
-                                <i class="mdi mdi-weather-pouring"></i>
-                                <p class="mb-0">
-                                    30&deg;
-                                </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Thu
-                                </p>
-                                <i class="mdi mdi-weather-pouring"></i>
-                                <p class="mb-0">
-                                    29&deg;
-                                </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Fri
-                                </p>
-                                <i class="mdi mdi-weather-snowy-rainy"></i>
-                                <p class="mb-0">
-                                    31&deg;
-                                </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1">
-                                    Sat
-                                </p>
-                                <i class="mdi mdi-weather-snowy"></i>
-                                <p class="mb-0">
-                                    32&deg;
-                                </p>
-                            </div> -->
                         </div>
                     </div>
                 </div>
-                <!--weather card ends-->
             </div>
         </div>
     </div>
+    
 </div>
