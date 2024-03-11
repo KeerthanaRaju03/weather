@@ -49,6 +49,7 @@ export class LocationComponent implements OnInit {
   }
 
   getWeatherData(lat: number, lon: number) {
+    console.log(lat, lon);
     this.weatherService.getCurrentWeather(lat, lon).subscribe(
       (data) => {
         this.weatherData = data;

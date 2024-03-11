@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let hour of weatherData">
-          <td >{{ hour.time }}</td>
+          <td>{{ hour.time }}</td>
           <td>{{ hour.condition.text }}</td>
           <td><img src="{{ hour.condition.icon }}" alt="Weather Icon"></td>
           <td>{{ hour.wind_kph }} kph</td>
