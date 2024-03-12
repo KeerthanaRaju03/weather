@@ -18,11 +18,226 @@
         routerLinkActive="active">Monthly Data</a>
         <div class="form form-group">
           <div class="input-container">
-            <input type="text" [(ngModel)]="weatherLocation" placeholder="Enter Location" class="input form-control">
-<button (click)="getWeather()" class="btn btn-secondary">Show</button>
+            <input type="text" [(ngModel)]="weatherLocation" placeholder="Enter Location" class="input form-control" (keyup.enter)="getWeather()">
+            <button (click)="getWeather()" class="btn btn-secondary">Show</button>
           </div>
-        </div>
-        
+        </div> 
     </div>
   </div>
 </nav>
+
+
+
+
+
+<!-- <h2 align="center">
+  march - 2024 {{ locationData | json }}
+</h2>
+<h2 align="center">{{ locationData?.name }} - {{ monthlyData[0]?.date | date: 'MMMM yyyy' }}</h2> -->
+<!-- 
+<table bgcolor="lightgrey" align="center"
+  cellspacing="21" cellpadding="21">
+  <caption align="top">
+  </caption>
+  <thead>
+      <tr>
+          <th>
+              Sun</th>
+          <th>
+              Mon</th>
+          <th>
+              Tue</th>
+          <th>
+              Wed</th>
+          <th>
+              Thu</th>
+          <th>
+              Fri</th>
+          <th>
+              Sat</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1<br/>
+          23<span
+          class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>2<br/>
+              27<span
+              class="symbol">&deg;</span>C<br/>
+              <img src="../../assets/images/113.webp"></td>
+      </tr>
+      <tr></tr>
+      <tr>
+          <td>3<br/>
+              24<span
+              class="symbol">&deg;</span>C<br/>
+              <img src="../../assets/images/113.webp">
+          </td>
+          <td>4<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+              <img src="../../assets/images/113.webp"></td>
+          <td>5<br/>
+              28<span
+              class="symbol">&deg;</span>C<br/>
+              <img src="../../assets/images/113.webp"></td>
+          <td>6<br/>
+              21<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/116.webp"></td>
+          <td>7<br/>
+              22<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>8<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>9<br/>
+              24<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/176.webp"></td>
+      </tr>
+      <tr>
+          <td>10<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>11<br/>
+              24<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/116 (1).webp"></td>
+          <td>12<br/>
+              27<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>13<br/>
+              25<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/116.webp"></td>
+          <td>14<br/>
+              24<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>15<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/266.webp"></td>
+          <td>16<br/>
+              22<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+      </tr>
+      <tr>
+          <td>17<br/>
+              27<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>18<br/>
+              22<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/116.webp"></td>
+          <td>19<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>20<br/>
+              25<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>21<br/>
+              27<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>22<br/>
+              21<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/176.webp"></td>
+          <td>23<br/>
+              25<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+      </tr>
+      <tr>
+          <td>24<br/>
+              22<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/176.webp"></td>
+          <td>25<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>26<br/>
+              22<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>27<br/>
+              23<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/266.webp"></td>
+          <td>28<br/>
+              28<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td>29<br/>
+              25<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/116.webp"></td>
+          <td>30<br/>
+              26<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+      </tr>
+      <tr>
+          <td>31<br/>
+              27<span
+              class="symbol">&deg;</span>C<br/>
+         <img src="../../assets/images/113.webp"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table> -->
+
+ <!-- <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+  <caption align="top">{{ locationData?.name }} - Monthly Weather</caption>
+  
+  <thead>
+    <tr>
+      <th>Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let week of monthlyData">
+          <td *ngFor="let day of week.dayData">
+            <ng-container *ngIf="day; else loadingTemplate">
+              {{ day.date | date: 'd' }}
+              <br />
+              {{ day.maxtemp_c }}°C
+              <br />
+              <img src="{{ day.condition?.icon }}" alt="{{ day.condition?.text }}" />
+            </ng-container>
+            <ng-template #loadingTemplate>Loading data...</ng-template>
+          </td>
+        </tr>
+    </tbody>
+    
+</table>
+-->

@@ -1,5 +1,4 @@
  <div class="card-group">
-
     <div class="card-1">
         <div class="card-body-1">
             <app-location></app-location>
@@ -8,56 +7,33 @@
     <div *ngIf="showPageContent" class="page-content page-container"
         id="page-content">
         <div class="card-2">
-
             <div class="card-body-2">
-
                 <div class="page-content page-container" id="page-content">
                     <div class="padding">
-                        <div
-                            class="row container d-flex justify-content-center">
+                        <div class="row container d-flex justify-content-center">
                             <div class="col-lg-8 grid-margin stretch-card">
-
                                 <div class="card card-weather">
                                     <div class="card-body">
                                         <div class="weather-date-location">
-                                            <div
-                                                class="d-flex align-items-start">
+                                            <div class="d-flex align-items-start">
                                                 <div>
-                                                    <h3>{{
-                                                        getFormattedDateAndDay(weatherApi?.forecast?.forecastday[0]?.date)?.day
-                                                        }}</h3>
+                                                    <h3>{{getFormattedDateAndDay(weatherApi?.forecast?.forecastday[0]?.date)?.day}}</h3>
                                                     <p class="text-gray">
-                                                        <span
-                                                            class="weather-date">{{
-                                                            weatherApi?.location?.name
-                                                            }} &nbsp;|
-                                                            &nbsp;</span>
-                                                        <span
-                                                            class="weather-location">{{
-                                                            weatherApi?.location?.country
-                                                            }}</span>
+                                                        <span class="weather-date">{{weatherApi?.location?.name}} &nbsp;|&nbsp;</span>
+                                                        <span class="weather-location">{{weatherApi?.location?.country}}</span>
                                                     </p>
-                                                    <p class="weather-location">
-                                                        {{
-                                                        weatherApi?.location?.lat
-                                                        }} lat | {{
-                                                        weatherApi?.location?.lon
-                                                        }} lon
+                                                    <p class="weather-location">{{weatherApi?.location?.lat}} lat | {{weatherApi?.location?.lon}} lon
                                                     </p>
                                                 </div>
-
-                                                <img
-                                                    *ngIf="weatherApi?.forecast?.forecastday[0]?.day?.condition?.icon"
+                                                <img *ngIf="weatherApi?.forecast?.forecastday[0]?.day?.condition?.icon"
                                                     [src]="getWeatherIconUrl(weatherApi?.forecast?.forecastday[0]?.day?.condition?.icon)"
                                                     alt="Weather Icon"
                                                     class="ml-auto"
-                                                    style="margin-left: 250px;">
+                                                    style="margin-left: 245px;">
                                             </div>
                                         </div>
-
                                         <div class="weather-data d-flex">
                                             <div class="mr-auto">
-
                                                 <h4 class="display-3">{{
                                                     weatherApi?.forecast?.forecastday[0]?.day?.avgtemp_c
                                                     }}<span
@@ -95,13 +71,10 @@
                                                                         hour.temp_c
                                                                         }}&deg;C</p>
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div> -->
-
                                             </div>
                                         </div>
                                     </div>
@@ -117,5 +90,4 @@
             </div>
         </div>
     </div>
-    
 </div>

@@ -1,0 +1,50 @@
+<h2 align="center">
+    March - 2024
+  </h2>
+  
+  <div *ngIf="isLoading">Loading data...</div>
+  <div *ngIf="isError">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="!isLoading && !isError && locationData?.name && monthlyData && monthlyData.length > 0">
+    <h2 align="center">
+      {{ locationData?.name }} - {{ monthlyData[0]?.date | date: 'MMMM yyyy' }}
+    </h2>
+  
+    <table bgcolor="lightgrey" align="center" cellspacing="21" cellpadding="21">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of monthlyData">
+          <td *ngFor="let day of week.day">
+            <ng-container *ngIf="day">
+              {{ day.date | date: 'd' }}
+              <br />
+              {{ day.day.maxtemp_c }}°C
+              <br />
+              <img *ngIf="day.day.condition" src="{{ day.day.condition?.icon }}" alt="{{ day.day.condition?.text }}" />
+            </ng-container>
+            <ng-container *ngIf="!day"> 
+              No data
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="!isLoading && !isError">
+    <pre>{{ locationData | json }}</pre>
+    <pre>{{ monthlyData | json }}</pre>
+  </div>
+  
