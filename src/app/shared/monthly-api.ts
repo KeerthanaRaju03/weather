@@ -11,7 +11,7 @@ export interface MonthlyApiData {
     };
     forecast: {
         forecastday: [{
-            date: string;
+            date: string;   
             date_epoch: number;
             day: {
                 maxtemp_c: number;
