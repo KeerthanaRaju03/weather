@@ -53,7 +53,6 @@ ngOnInit() {
             alert('Weather data not found for the specified location. Please enter a valid location.');
           } else {
             console.error('Error getting weather data:', error);
-            // alert('An error occurred while fetching weather data. Please try again later.');
             alert('Wrong search. Please enter a valid location.');
           }
         }
