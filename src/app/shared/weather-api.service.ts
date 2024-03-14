@@ -18,7 +18,7 @@ export class WeatherApiService {
         this.getCurrentWeather(location).pipe(
           catchError(error => {
             console.error('Error fetching weather data:', error);
-            return EMPTY; // Return an empty observable or handle the error as needed
+            return EMPTY; 
           })
         )
       )

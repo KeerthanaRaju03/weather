@@ -15,7 +15,7 @@
           <br />
           <p>{{ latitude | number:'1.2-2' }} lat &nbsp;|&nbsp;{{ longitude |
             number:'1.2-2' }} log</p>
-          <p>{{ weatherData.name }} &nbsp;| {{ weatherData.sys.country }}</p>
+          <!-- <p>{{ weatherData.name }} &nbsp;| {{ weatherData.sys.country }}</p>
           <p *ngIf="temperatureCelsius">{{ temperatureCelsius?.toFixed(2) }} °C
             &nbsp; | &nbsp; {{ temperatureFahrenheit?.toFixed(2) }} °F</p>
           <p *ngIf="temperatureFahrenheit"></p>
@@ -25,7 +25,19 @@
           </p>
           <p *ngIf="weatherData.weather[0].main">
             {{ weatherData.weather[0].main }}
-          </p>
+          </p> -->
+          <div *ngIf="weatherData">
+            <p>{{ weatherData.name }} &nbsp;| {{ weatherData.sys?.country }}</p>
+            <p *ngIf="temperatureCelsius">{{ temperatureCelsius?.toFixed(2) }} °C
+              &nbsp; | &nbsp; {{ temperatureFahrenheit?.toFixed(2) }} °F</p>
+            <p *ngIf="dataCalculationTime">{{ dataCalculationTime }}</p>
+            <p *ngIf="weatherData.weather && weatherData.weather.length > 0">{{ weatherData.weather[0]?.description }}</p>
+            <p *ngIf="weatherData.weather && weatherData.weather.length > 0">{{ weatherData.weather[0]?.main }}</p>
+          </div>
+          <div *ngIf="!weatherData">
+            <p>No weather data available.</p>
+          </div>
+          
 
         </ng-template>
       </div>

@@ -12,6 +12,8 @@ import { WeeklyDataComponent } from './weekly-data/weekly-data.component';
 import { HourComponent } from './hour/hour.component';
 import { MonthlyComponent } from './monthly/monthly.component';
 import { SharedService } from './shared/shared.service';
+import { DatePipe } from '@angular/common';
+import { ChunkPipe } from './monthly/chunk.pipe';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { SharedService } from './shared/shared.service';
     TestingComponent,
     WeeklyDataComponent,
     HourComponent,
-    MonthlyComponent
+    MonthlyComponent,
+    ChunkPipe,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { SharedService } from './shared/shared.service';
     HttpClientModule,
     HttpClientJsonpModule,
   ],
-  providers: [SharedService],
+  providers: [SharedService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,25 +1,38 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { MonthlyApiService } from '../shared/monthly-api.service';
-
+import { SharedService } from '../shared/shared.service';
+import { MonthlyApiData } from '../shared/monthly-api';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-monthly',
   templateUrl: './monthly.component.html',
   styleUrls: ['./monthly.component.scss'],
 })
-export class MonthlyComponent implements OnChanges {
-    @Input() locationData: any;
+export class MonthlyComponent implements OnChanges, OnInit {
+  @Input() locationData: any;
   monthlyData: any[] = [];
   isLoading: boolean = true;
   isError: boolean = false;
   errorMessage: string = '';
-
-  constructor(private monthlyApiService: MonthlyApiService) {}
+  days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  constructor(private monthlyApiService: MonthlyApiService, private sharedService: SharedService,private datePipe: DatePipe) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['locationData'] && !changes['locationData'].firstChange) {
       console.log('Location Data:', this.locationData);
-      this.getMonthlyData();
+      if (this.locationData) {
+        this.getMonthlyData();
+      }
     }
+  }
+
+  ngOnInit() {
+    this.sharedService.currentWeatherLocation.subscribe((location) => {
+      if (location) {
+        this.locationData = location;
+        this.getMonthlyData();
+      }
+    });
   }
   
 
@@ -29,13 +42,14 @@ export class MonthlyComponent implements OnChanges {
     this.errorMessage = '';
     console.log('Getting monthly data for location:', this.locationData);
 
-    if (this.locationData?.name) {
-      this.monthlyApiService.getCurrentWeatherByLocation(this.locationData.name).subscribe(
+    if (this.locationData) {
+      this.monthlyApiService.getCurrentWeatherByLocation(this.locationData).subscribe(
         (data) => {
-          console.log('API Response:', data);
+          console.log('API Response for data:', data);
 
-          if (data && data.forecast && data.forecast.forecastday && data.forecast.forecastday.length > 0) {
-            this.monthlyData = data.forecast.forecastday;
+          if (data && data.length > 0) {
+            this.monthlyData = data
+            console.log('monthlyData',this.monthlyData)
             this.isLoading = false;
           } else {
             console.error('Invalid API response format. Check the API response structure.');
@@ -56,5 +70,11 @@ export class MonthlyComponent implements OnChanges {
       this.isLoading = false;
       this.errorMessage = 'Location data is missing.';
     }
+  }
+
+  
+  getDayOfWeek(date: string): string {
+    const formattedDate = new Date(date);
+    return this.datePipe.transform(formattedDate, 'EEE') || ''; // Ensure to handle null values
   }
 }

@@ -6,7 +6,7 @@ import { WeeklyApiService } from '../shared/weekly-api.service';
   styleUrls: ['./weekly-data.component.scss']
 })
 export class WeeklyDataComponent implements OnInit {
-  weatherData: any; // Update the type based on your API response structure
+  weatherData: any; 
 
   constructor(private weeklyApiService: WeeklyApiService) {}
 
