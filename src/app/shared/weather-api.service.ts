@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
 import { switchMap, catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +30,4 @@ export class WeatherApiService {
     return this.http.get<any>(url);
   }
   // const url = `https://api.openweathermap.org/data/2.5/forecast?q=${weatherLocation}&appid=${this.apiKey}`;
-
-
 }

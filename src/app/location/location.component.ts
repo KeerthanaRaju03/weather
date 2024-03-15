@@ -15,13 +15,10 @@ export class LocationComponent implements OnInit {
   temperatureFahrenheit: number | undefined;
   dataCalculationTime: string | undefined;
   showLocationData: boolean = false;
-
   constructor(private weatherService: WeatherDateService) { }
-
   ngOnInit(): void {
     this.getCurrentLocation();
   }
-
   getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -29,11 +26,8 @@ export class LocationComponent implements OnInit {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
           this.locationError = undefined;
-
           this.reverseGeocode(this.latitude, this.longitude);
-
           this.getWeatherData(this.latitude, this.longitude);
-
           this.showLocationData = true;
         },
         (error) => {
@@ -44,10 +38,8 @@ export class LocationComponent implements OnInit {
       this.locationError = 'Geolocation is not supported by this browser.';
     }
   }
-
   reverseGeocode(latitude: number, longitude: number) {
   }
-
   getWeatherData(lat: number, lon: number) {
     console.log(lat, lon);
     this.weatherService.getCurrentWeather(lat, lon).subscribe(

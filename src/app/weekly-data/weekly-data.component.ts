@@ -7,9 +7,7 @@ import { WeeklyApiService } from '../shared/weekly-api.service';
 })
 export class WeeklyDataComponent implements OnInit {
   weatherData: any; 
-
   constructor(private weeklyApiService: WeeklyApiService) {}
-
   ngOnInit() {
     this.weeklyApiService.getCurrentWeatherByLocation().subscribe(
       (data) => {
@@ -20,5 +18,4 @@ export class WeeklyDataComponent implements OnInit {
       }
     );
   }
-
 }

@@ -11,24 +11,18 @@ import { SharedService } from '../shared/shared.service';
 })
 
 export class HomeComponent {
-
-
   weatherLocation: string='';
   weatherApi: any;
   searchForm!: FormGroup;
   allData: any[] | undefined;
   showPageContent: boolean = false;
 
-
 ngOnInit() {
   this.weatherApiService.searchWeather.subscribe((location: string) => {
     this.onSearchWeather(location);
   });
 }
-
-
   constructor(private weatherApiService: WeatherApiService,private sharedService: SharedService) {}
-
   onSearchWeather(location: string) {
     this.weatherLocation = location;
     console.log(this.weatherLocation)
@@ -46,7 +40,6 @@ ngOnInit() {
             // alert('Wrong search. Please enter a valid location.');
             return;
           }
-          
         },
         (error) => {
           if (error instanceof HttpErrorResponse && error.status === 404) {
@@ -58,15 +51,11 @@ ngOnInit() {
         }
       );
     }
-  
     getFormattedDateAndDay(dt_txt: string): { formattedDate: string; day: string } {
       const date = new Date(dt_txt);
-     
       const formattedDate = date.toISOString().split('T')[0];
-  
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       const day = days[date.getDay()];
-  
       return { formattedDate, day };
     }
     getDay(dateString: string): string {
@@ -75,17 +64,12 @@ ngOnInit() {
       return days[date.getDay()];
     }
     getWeatherIconUrl(iconCode: string): string {
-      
       const iconMapping: { [key: string]: string } = {
         '1000': '//cdn.weatherapi.com/weather/64x64/night/113.png',
         '1003': '//cdn.weatherapi.com/weather/64x64/night/113.png',
-       
       };
-  
       return iconMapping[iconCode] || '//cdn.weatherapi.com/weather/64x64/night/113.png';
     }
-    
-    
   }
 
   
