@@ -1,79 +1,105 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import $ from 'jquery';
-import * as bootstrap from 'bootstrap';
-import { FormGroup } from '@angular/forms';
-
-import { WeatherApiService } from '../shared/weather-api.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { MonthlyApiService } from '../shared/monthly-api.service';
 import { SharedService } from '../shared/shared.service';
+import { MonthlyApiData } from '../shared/monthly-api';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-testing',
   templateUrl: './testing.component.html',
   styleUrl: './testing.component.scss'
 })
-export class TestingComponent implements OnInit{
-    weatherApi: any;
+export class TestingComponent {
+//   @Input() locationData: any;
+//   monthlyData: any[] = [];
+//   isLoading: boolean = true;
+//   isError: boolean = false;
+//   errorMessage: string = '';
+//   days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+//   constructor(private monthlyApiService: MonthlyApiService, private sharedService: SharedService,private datePipe: DatePipe) { this.monthlyData.reverse();
 
-  constructor(private weatherApiService: WeatherApiService,private sharedService: SharedService) { }
+//     this.reversedDaysData = this.monthlyData[0]?.forecast?.forecastday
+//       ?.map((day: any) => {
+//         return {
+//           date: day.date,
+//           maxTemp: day.day?.maxtemp_c,
+//           icon: day.day?.condition?.icon,
+//           text: day.day?.condition?.text,
+//           dayOfWeek: this.getDayOfWeek(day.date)
+//         };
+//       })
+//       ?.reduce((acc: any, curr: any) => {
+//         acc[curr.dayOfWeek] = curr;
+//         return acc;
+//       }, {});
 
-  ngOnInit() {
-    this.weatherApiService.searchWeather.subscribe((location: string) => {
-      this.onSearchWeather(location);
-    });
-  }
-  onSearchWeather(location: string) {
-    // this.weatherLocation = location;
-  }
-    @ViewChild('carousel') carousel!: ElementRef;
+   
+//     // this.daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];}
 
-  ngAfterViewInit() {
-    const carousel = this.carousel?.nativeElement;
-    if (carousel) {
-      const carouselInstance = new bootstrap.Carousel(carousel); // Initialize the Bootstrap carousel
-    }
-  }
+//   ngOnChanges(changes: SimpleChanges) {
+//     if (changes['locationData'] && !changes['locationData'].firstChange) {
+//       console.log('Location Data:', this.locationData);
+//       if (this.locationData) {
+//         this.getMonthlyData();
+//       }
+//     }
+//   }
 
-  nextSlide() {
-    const carousel = this.carousel?.nativeElement;
-    if (carousel) {
-      const carouselInstance = new bootstrap.Carousel(carousel);
-      carouselInstance.next(); // Use Bootstrap carousel method for transitioning
-    }
-  }
+//   ngOnInit() {
+//     this.sharedService.currentWeatherLocation.subscribe((location) => {
+//       if (location) {
+//         this.locationData = location;
+//         this.getMonthlyData();
+//       }
+//     });
+//   }
+  
 
-  prevSlide() {
-    const carousel = this.carousel?.nativeElement;
-    if (carousel) {
-      const carouselInstance = new bootstrap.Carousel(carousel);
-      carouselInstance.prev(); // Use Bootstrap carousel method for transitioning
-    }
-  }
+//   getMonthlyData() {
+//     this.isLoading = true;
+//     this.isError = false;
+//     this.errorMessage = '';
+//     console.log('Getting monthly data for location:', this.locationData);
+
+//     if (this.locationData) {
+//       this.monthlyApiService.getCurrentWeatherByLocation(this.locationData).subscribe(
+//         (data) => {
+//           console.log('API Response for data:', data);
+
+//           if (data && data.length > 0) {
+//             this.monthlyData = data
+//             console.log('monthlyData',this.monthlyData)
+//             this.isLoading = false;
+//           } else {
+//             console.error('Invalid API response format. Check the API response structure.');
+//             this.isError = true;
+//             this.errorMessage = 'Invalid API response format.';
+//           }
+//         },
+//         (error) => {
+//           console.error('Error fetching monthly data:', error);
+//           this.isError = true;
+//           this.isLoading = false;
+//           this.errorMessage = 'Error fetching monthly data. Please try again later.';
+//         }
+//       );
+//     } else {
+//       console.error('locationData or its "name" property is undefined.');
+//       this.isError = true;
+//       this.isLoading = false;
+//       this.errorMessage = 'Location data is missing.';
+//     }
+//   }
+
+  
+//   getDayOfWeek(dateString: string): string {
+//     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+//     const date = new Date(dateString);
+//     const dayIndex = date.getDay();
+//     return daysOfWeek[dayIndex];
+//   }
+// }
+//   ngOnInit(): void {
+//     throw new Error('Method not implemented.');
+//   }
 
 }
-
-
-//   @ViewChild('carousel') carousel!: ElementRef;
-
-//   ngAfterViewInit() {
-//     const carousel = this.carousel?.nativeElement;
-//     if (carousel) {
-//       const carouselInstance = new bootstrap.Carousel(carousel); // Initialize the Bootstrap carousel
-//     }
-//   }
-
-//   nextSlide() {
-//     const carousel = this.carousel?.nativeElement;
-//     if (carousel) {
-//       const carouselInstance = new bootstrap.Carousel(carousel);
-//       carouselInstance.next(); // Use Bootstrap carousel method for transitioning
-//     }
-//   }
-
-//   prevSlide() {
-//     const carousel = this.carousel?.nativeElement;
-//     if (carousel) {
-//       const carouselInstance = new bootstrap.Carousel(carousel);
-//       carouselInstance.prev(); // Use Bootstrap carousel method for transitioning
-//     }
-//   }
-
