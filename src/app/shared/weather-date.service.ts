@@ -17,10 +17,8 @@ export class WeatherDateService {
   // }
   private apiKey = '2616e2c5565cf813cb3594ae4716a8ce';
   constructor(private http: HttpClient) { }
-
   getCurrentWeather(latitude: number, longitude: number): Observable<any> {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.apiKey}`;
     return this.http.get<any>(url);
   }
-  
 }

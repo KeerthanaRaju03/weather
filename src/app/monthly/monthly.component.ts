@@ -16,7 +16,6 @@ export class MonthlyComponent implements OnChanges, OnInit {
   errorMessage: string = '';
   days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   constructor(private monthlyApiService: MonthlyApiService, private sharedService: SharedService,private datePipe: DatePipe) {}
-
   ngOnChanges(changes: SimpleChanges) {
     if (changes['locationData'] && !changes['locationData'].firstChange) {
       console.log('Location Data:', this.locationData);
@@ -25,7 +24,6 @@ export class MonthlyComponent implements OnChanges, OnInit {
       }
     }
   }
-
   ngOnInit() {
     this.sharedService.currentWeatherLocation.subscribe((location) => {
       if (location) {
@@ -34,19 +32,15 @@ export class MonthlyComponent implements OnChanges, OnInit {
       }
     });
   }
-  
-
   getMonthlyData() {
     this.isLoading = true;
     this.isError = false;
     this.errorMessage = '';
     console.log('Getting monthly data for location:', this.locationData);
-
     if (this.locationData) {
       this.monthlyApiService.getCurrentWeatherByLocation(this.locationData).subscribe(
         (data) => {
           console.log('API Response for data:', data);
-
           if (data && data.length > 0) {
             this.monthlyData = data
             console.log('monthlyData',this.monthlyData)
@@ -71,10 +65,8 @@ export class MonthlyComponent implements OnChanges, OnInit {
       this.errorMessage = 'Location data is missing.';
     }
   }
-
-  
   getDayOfWeek(date: string): string {
     const formattedDate = new Date(date);
-    return this.datePipe.transform(formattedDate, 'EEE') || ''; // Ensure to handle null values
+    return this.datePipe.transform(formattedDate, 'EEE') || ''; 
   }
 }

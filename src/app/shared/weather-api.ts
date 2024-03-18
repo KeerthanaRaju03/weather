@@ -1,4 +1,3 @@
-
 export interface WeatherApi {
     location: {
       name: string;

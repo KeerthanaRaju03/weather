@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../shared/weather-api.service';
-
 @Component({
   selector: 'app-hour',
   templateUrl: './hour.component.html',
@@ -9,16 +8,13 @@ import { WeatherApiService } from '../shared/weather-api.service';
 export class HourComponent  implements OnInit {
   weatherData: any; 
   currentDate: string = '';
-
   constructor(private weatherApiService: WeatherApiService) {}
-
   ngOnInit() {
     this.weatherApiService.searchWeather.subscribe((location: string) => {
       this.fetchHourlyWeather(location);
     });
     this.setCurrentDate();
   }
-
   fetchHourlyWeather(location: string) {
     this.weatherApiService.getCurrentWeather(location).subscribe((data: any) => {
       this.weatherData = data.forecast.forecastday[0].hour;
@@ -32,9 +28,6 @@ export class HourComponent  implements OnInit {
       month: 'long',
       day: 'numeric'
     };
-
     this.currentDate = today.toLocaleDateString('en-US', options);
   }
-
-  
 }

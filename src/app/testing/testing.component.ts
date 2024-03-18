@@ -16,7 +16,6 @@ export class TestingComponent {
 //   errorMessage: string = '';
 //   days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 //   constructor(private monthlyApiService: MonthlyApiService, private sharedService: SharedService,private datePipe: DatePipe) { this.monthlyData.reverse();
-
 //     this.reversedDaysData = this.monthlyData[0]?.forecast?.forecastday
 //       ?.map((day: any) => {
 //         return {
@@ -30,11 +29,8 @@ export class TestingComponent {
 //       ?.reduce((acc: any, curr: any) => {
 //         acc[curr.dayOfWeek] = curr;
 //         return acc;
-//       }, {});
-
-   
+//       }, {});   
 //     // this.daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];}
-
 //   ngOnChanges(changes: SimpleChanges) {
 //     if (changes['locationData'] && !changes['locationData'].firstChange) {
 //       console.log('Location Data:', this.locationData);
@@ -43,7 +39,6 @@ export class TestingComponent {
 //       }
 //     }
 //   }
-
 //   ngOnInit() {
 //     this.sharedService.currentWeatherLocation.subscribe((location) => {
 //       if (location) {
@@ -52,19 +47,15 @@ export class TestingComponent {
 //       }
 //     });
 //   }
-  
-
 //   getMonthlyData() {
 //     this.isLoading = true;
 //     this.isError = false;
 //     this.errorMessage = '';
 //     console.log('Getting monthly data for location:', this.locationData);
-
 //     if (this.locationData) {
 //       this.monthlyApiService.getCurrentWeatherByLocation(this.locationData).subscribe(
 //         (data) => {
 //           console.log('API Response for data:', data);
-
 //           if (data && data.length > 0) {
 //             this.monthlyData = data
 //             console.log('monthlyData',this.monthlyData)
@@ -89,8 +80,6 @@ export class TestingComponent {
 //       this.errorMessage = 'Location data is missing.';
 //     }
 //   }
-
-  
 //   getDayOfWeek(dateString: string): string {
 //     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 //     const date = new Date(dateString);
@@ -101,5 +90,4 @@ export class TestingComponent {
 //   ngOnInit(): void {
 //     throw new Error('Method not implemented.');
 //   }
-
 }

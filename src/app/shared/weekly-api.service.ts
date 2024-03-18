@@ -29,17 +29,13 @@ export class WeeklyApiService {
       console.error('Weather location is empty.');
       return EMPTY;
     }
-
     // const todayDate = new Date().toISOString().split('T')[0];
     // const endDate = new Date();
     // endDate.setDate(endDate.getDate() + 7);
     // const formattedEndDate = endDate.toISOString().split('T')[0];
-
     const url = `https://api.weatherapi.com/v1/forecast.json?q=${weatherLocation}&days=7&key=${this.apiKey}`;
-
     // const url = `https://api.weatherapi.com/v1/history.json?q=${weatherLocation}&dt=${todayDate}&end_dt=${formattedEndDate}&key=${this.apiKey}`;
     console.log('API Request URL:', url);
-
     return this.http.get<any>(url).pipe(
       catchError((error) => {
         console.error('Error fetching weather data:', error);
